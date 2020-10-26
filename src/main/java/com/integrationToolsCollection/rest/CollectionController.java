@@ -97,6 +97,20 @@ public class CollectionController {
                 }
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
 
+            case 6:
+                fileName = "JSON test recommended validations set.pdf";
+                file = new File("files/" + fileName);
+                if (file.exists()) {
+                    Path path = Paths.get(file.getAbsolutePath());
+                    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+                    return ResponseEntity.ok().headers(headers).contentLength(file.length())
+                            .contentType(MediaType
+                                    .parseMediaType("application/pdf"))
+                            .body(resource);
+                }
+                return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
