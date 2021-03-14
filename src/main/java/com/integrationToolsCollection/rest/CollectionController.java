@@ -40,7 +40,7 @@ public class CollectionController {
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
 
             case 2:
-                fileName = "Local Server v.2.1.0.exe";
+                fileName = "Local Server v.2.2.0.exe";
                 file = new File("files/" + fileName);
                 if (file.exists()) {
                     Path path = Paths.get(file.getAbsolutePath());
