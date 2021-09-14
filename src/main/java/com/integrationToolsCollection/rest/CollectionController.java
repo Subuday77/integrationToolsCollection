@@ -40,7 +40,7 @@ public class CollectionController {
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
 
             case 2:
-                fileName = "Local Server v.3.15.0.exe";
+                fileName = "Local Server v.3.16.0.exe";
                 file = new File("files/" + fileName);
                 if (file.exists()) {
                     Path path = Paths.get(file.getAbsolutePath());
@@ -98,7 +98,7 @@ public class CollectionController {
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
 
             case 6:
-                fileName = "JSON test recommended validations set.pdf";
+                fileName = "JSON test recommended validations set v1.0.1.pdf";
                 file = new File("files/" + fileName);
                 if (file.exists()) {
                     Path path = Paths.get(file.getAbsolutePath());
