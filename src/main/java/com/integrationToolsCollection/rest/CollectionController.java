@@ -112,7 +112,7 @@ public class CollectionController {
                 }
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
             case 7:
-                fileName = "Evolution Local Server v.1.3.0.exe";
+                fileName = "Evolution Local Server v.1.4.0.exe";
                 file = new File("files/" + fileName);
                 if (file.exists()) {
                     Path path = Paths.get(file.getAbsolutePath());
