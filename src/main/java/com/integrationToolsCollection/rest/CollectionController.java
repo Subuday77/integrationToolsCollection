@@ -125,6 +125,21 @@ public class CollectionController {
                             .body(resource);
                 }
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
+
+                case 8:
+                fileName = "Evolution Local Server v.3.0.0.jar";
+                file = new File("files/" + fileName);
+                if (file.exists()) {
+                    Path path = Paths.get(file.getAbsolutePath());
+                    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+                    return ResponseEntity.ok().headers(headers).contentLength(file.length())
+                            .contentType(MediaType
+                                    .parseMediaType("application/java-archive"))
+                            .body(resource);
+                }
+                return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
         }
 
 
