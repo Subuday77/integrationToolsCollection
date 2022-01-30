@@ -149,7 +149,9 @@ public class CollectionController {
                     HttpHeaders headers = new HttpHeaders();
                     headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
                     return ResponseEntity.ok().headers(headers).contentLength(file.length())
-                            .contentType(MediaType.TEXT_PLAIN).body(resource);
+                            .contentType(MediaType
+                                    .parseMediaType("application/bat"))
+                            .body(resource);
                 }
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
         }
