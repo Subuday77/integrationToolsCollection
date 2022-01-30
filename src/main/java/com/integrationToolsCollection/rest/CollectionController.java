@@ -141,7 +141,7 @@ public class CollectionController {
                 }
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
             case 9:
-                fileName = "Kill Penguin.bat";
+                fileName = "Close Evolution Local Server.bat";
                 file = new File("files/" + fileName);
                 if (file.exists()) {
                     Path path = Paths.get(file.getAbsolutePath());
