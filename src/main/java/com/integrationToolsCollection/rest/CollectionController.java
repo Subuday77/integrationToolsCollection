@@ -140,6 +140,7 @@ public class CollectionController {
                             .body(resource);
                 }
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
+
             case 9:
                 fileName = "Close Evolution Local Server.bat";
                 file = new File("files/" + fileName);
@@ -151,6 +152,21 @@ public class CollectionController {
                     return ResponseEntity.ok().headers(headers).contentLength(file.length())
                             .contentType(MediaType
                                     .parseMediaType("application/bat"))
+                            .body(resource);
+                }
+                return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
+
+            case 10:
+                fileName = "Evolution Tables User Manual v.1.0.0.pdf";
+                file = new File("files/" + fileName);
+                if (file.exists()) {
+                    Path path = Paths.get(file.getAbsolutePath());
+                    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+                    return ResponseEntity.ok().headers(headers).contentLength(file.length())
+                            .contentType(MediaType
+                                    .parseMediaType("application/pdf"))
                             .body(resource);
                 }
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
