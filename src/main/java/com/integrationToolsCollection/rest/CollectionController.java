@@ -170,6 +170,21 @@ public class CollectionController {
                             .body(resource);
                 }
                 return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
+            case 11:
+                fileName = "Evolution Tables User Manual v.1.0.0.pdf";
+                file = new File("files/" + fileName);
+                if (file.exists()) {
+                    Path path = Paths.get(file.getAbsolutePath());
+                    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+                    return ResponseEntity.ok().headers(headers).contentLength(file.length())
+                            .contentType(MediaType
+                                    .parseMediaType("application/octet-stream")) // https://stackoverflow.com/questions/71494198/how-to-force-pdf-download-in-firefox
+                            .body(resource);
+                }
+                return new ResponseEntity<String>("File not found", HttpStatus.NOT_FOUND);
+
         }
 
 
